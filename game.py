@@ -21,7 +21,7 @@ def move(number):
   elif gamelogic(number) and list1[number-1] != 1:
       list1[number-1] = 1
       if checkwinner():
-        return print("Congrats u won")
+        return print("congrats u won\n", gamefield())
   botmove()
 
 
@@ -30,8 +30,8 @@ def botmove():
   botnumber = random.randint(1,9) 
   if list1[botnumber-1] == 0:
     list1[botnumber-1] = 2
-    if checkwinner():
-      return print("Congrats doghist Bot beat u ")
+    if botwinner():
+      return print("congrats bot wins \n", gamefield())
   else:
     while list1[botnumber-1] == (1 or 2):
       botnumber = random.randint(1,9) 
@@ -40,30 +40,54 @@ def botmove():
   move(int(input("Your Turn, Bitch \n\n"))) 
 
 
+def botwinner():
+  if (list1[0] and list1[1] and list1[2]) == 2: 
+    return True
+
+  elif (list1[3] and  list1[4] and list1[5]) == 2: 
+    return True
+
+  elif (list1[6] and list1[7] and list1[8]) == 2: 
+    return True
+
+  elif (list1[0] and list1[3] and list1[6]) == 2: 
+    return True
+
+  elif (list1[4] and list1[1] and list1[7]) == 2: 
+    return True
+
+  elif (list1[2] and list1[5] and list1[8]) == 2: 
+    return True
+
+  elif (list1[0] and list1[4] and list1[8]) == 2: 
+    return True
+
+  elif (list1[2] and list1[4] and list1[6]) == 2: 
+    return True
 
 def checkwinner():
-  if (list1[0] and list1[1] and list1[2]) == (1 or 2): 
+  if (list1[0] and list1[1] and list1[2]) == 1: 
     return True
 
-  elif (list1[3] and  list1[4] and list1[5]) == (1 or 2): 
+  elif (list1[3] and  list1[4] and list1[5]) == 1: 
     return True
 
-  elif (list1[6] and list1[7] and list1[8]) == (1 or 2): 
+  elif (list1[6] and list1[7] and list1[8]) == 1: 
     return True
 
-  elif (list1[0] and list1[3] and list1[6]) == (1 or 2): 
+  elif (list1[0] and list1[3] and list1[6]) == 1: 
     return True
 
-  elif (list1[4] and list1[1] and list1[7]) == (1 or 2): 
+  elif (list1[4] and list1[1] and list1[7]) == 1: 
     return True
 
-  elif (list1[2] and list1[5] and list1[8]) == (1 or 2): 
+  elif (list1[2] and list1[5] and list1[8]) == 1: 
     return True
 
-  elif (list1[0] and list1[4] and list1[8]) == (1 or 2): 
+  elif (list1[0] and list1[4] and list1[8]) == 1: 
     return True
 
-  elif (list1[2] and list1[4] and list1[6]) == (1 or 2): 
+  elif (list1[2] and list1[4] and list1[6]) == 1: 
     return True
 
 move(int(input("Type in number, representing spot on playingfield\n ")))
