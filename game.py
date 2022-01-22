@@ -9,19 +9,20 @@ def gamefield():
 
 
 def gamelogic(number):
-  if list1[number] == 0: 
+  if number < 10 and number > 0 and list1[number - 1] == 0: 
     return True
   else:
     return False
 
 def move(number):
-  while number > 9 or number < 1:
+  while number > 10 or number < 0:
     print("invalid input, type an intiger number between 1-9 each representing one position on the board where u want to make an cross\n ")
-    while gamelogic(number)== False and list1[number] == 1:
-      number = input("type number bitch\n ")
-      if gamelogic(number) and list1[number] != 1:
-        list1[number]
-        botmove()
+  if gamelogic(number) and list1[number-1] == (1 or 2):
+    number = int(input("type number bitch\n "))
+    move(number)
+  elif gamelogic(number) and list1[number-1] != 1:
+    list1[number-1] = 1
+    return True and print(gamefield())
 
 
 def botmove():
@@ -31,12 +32,10 @@ def botmove():
     if gamelogic(botnumber) and list1[botnumber] != 1:
       list1[botnumber]
 
-print(gamefield())
 
-move(input("Type in number, representing spot on playingfield\n "))
+move(int(input("Type in number, representing spot on playingfield\n ")))
 
 
-print(gamefield())
 
 
 
