@@ -18,7 +18,7 @@ def move(number):
   if gamelogic(number) and list1[number-1] == (1 or 2):
       number = int(input("type number bitch\n "))
       move(number)
-  elif gamelogic(number) and list1[number-1] != 1:
+  elif gamelogic(number) and list1[number-1] == 0:
       list1[number-1] = 1
       if checkwinner():
         return print("congrats u won\n", gamefield())
@@ -32,9 +32,7 @@ def botmove():
     list1[botnumber-1] = 2
     if botwinner():
       return print("congrats bot wins \n", gamefield())
-  else:
-    while list1[botnumber-1] == (1 or 2):
-      botnumber = random.randint(1,9) 
+  elif list1[botnumber-1] == (1 or 2):
       botmove()
   print(gamefield())
   move(int(input("Your Turn, Bitch \n\n"))) 
@@ -90,4 +88,5 @@ def checkwinner():
   elif (list1[2] and list1[4] and list1[6]) == 1: 
     return True
 
+print(gamefield())
 move(int(input("Type in number, representing spot on playingfield\n ")))
