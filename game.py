@@ -6,40 +6,34 @@ def gamefield():
   return np.array(list1).reshape(3,3)
 
 
-def gamelogic(number):
-  if number < 10 and number > 0 and list1[number - 1] == 0: 
-    return True
-  else:
-    return False
-
 def move(number):
   while number > 10 or number < 0:
-    number = int(input("invalid input, type an intiger number between 1-9 each representing one position on the board where u want to make an cross\n "))
-  if gamelogic(number) and list1[number-1] == (1 or 2):
-      number = int(input("type number bitch\n "))
-      move(number)
-  elif gamelogic(number) and list1[number-1] == 0:
-      list1[number-1] = 1
-      if checkwinner():
-        return print("congrats u won\n", gamefield())
-  botmove()
-
+    number = int(input("To large, number needs to be 1-9\n"))
+  if  list1[number-1] == (1 or 2):
+    number = int(input("Spot taken\n"))
+    move(number)
+  elif list1[number-1] == 0:
+    list1[number-1] = 1
+    if checkwinner():
+        return print("congrats u win\n", gamefield())
+    botmove()
 
 
 def botmove():
   botnumber = random.randint(1,9) 
   if list1[botnumber-1] == 0:
     list1[botnumber-1] = 2
+    print(gamefield())
     if botwinner():
       return print("congrats bot wins \n", gamefield())
+    move(int(input("Your turn\n"))) 
   elif list1[botnumber-1] == (1 or 2):
       botmove()
-  print(gamefield())
-  move(int(input("Your Turn, Bitch \n\n"))) 
+
 
 
 def botwinner():
-  if (list1[0] and list1[1] and list1[2]) == 2: 
+  if (list1[0] and list1[1] and  list1[2]) == 2: 
     return True
 
   elif (list1[3] and  list1[4] and list1[5]) == 2: 
@@ -48,19 +42,19 @@ def botwinner():
   elif (list1[6] and list1[7] and list1[8]) == 2: 
     return True
 
-  elif (list1[0] and list1[3] and list1[6]) == 2: 
+  elif (list1[0] and  list1[3]and list1[6]) == 2: 
     return True
 
   elif (list1[4] and list1[1] and list1[7]) == 2: 
     return True
 
-  elif (list1[2] and list1[5] and list1[8]) == 2: 
+  elif (list1[2] and list1[5] and list1[8]) == 2:
     return True
 
-  elif (list1[0] and list1[4] and list1[8]) == 2: 
+  elif (list1[0] and list1[4] and list1[8]) == 2:
     return True
 
-  elif (list1[2] and list1[4] and list1[6]) == 2: 
+  elif (list1[2] and list1[4] and list1[6]) == 2:
     return True
 
 def checkwinner():
@@ -89,4 +83,4 @@ def checkwinner():
     return True
 
 print(gamefield())
-move(int(input("Type in number, representing spot on playingfield\n ")))
+move(int(input("Type in number\n")))
