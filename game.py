@@ -9,7 +9,7 @@ def gamefield():
 def move(number):
   while number > 10 or number < 0:
     number = int(input("To large, number needs to be 1-9\n"))
-  if  list1[number-1] == (1 or 2):
+  if  list1[number-1] == 1 or list1[number-1] == 2:
     number = int(input("Spot taken\n"))
     move(number)
   elif list1[number-1] == 0:
@@ -27,8 +27,9 @@ def botmove():
     if botwinner():
       return print("congrats bot wins \n", gamefield())
     move(int(input("Your turn\n"))) 
-  elif list1[botnumber-1] == (1 or 2):
+  elif list1[botnumber-1] == 1 or list1[botnumber-1] == 2:
       botmove()
+      print(gamefield())
 
 
 
